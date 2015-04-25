@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
+
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./angular.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body ng-app="myModule">
+
+
+        <div ng-controller="AppCtrl" layout="column" style="bottom: 0;">
+            <section layout="row" flex>
+
+        <!--Right Navigation -->
+
+                <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+                    <md-toolbar class="md-theme-indigo">
+                        <h1 class="md-toolbar-tools">TODO List Generator</h1>
+                    </md-toolbar>
+                    <md-content layout-padding ng-controller="LeftCtrl">
+                        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+                        </md-button>
+                        <p hide-md show-gt-md>
+                            Enter your Title</br>
+                            Discription<br>
+                            Select Priority
+                        </p>
+                    </md-content>
+                </md-sidenav>
+
+        <!--Mid content start-->
+
+                <md-content flex layout-padding>
+                    <div layout="column" layout-fill layout-align="top center">
+
+                        <!--Main heading-->
+                        <md-subheader class="heading">
+                            <img src="logo.png" width="170px" height="140px">
+                        </md-subheader>
+
+                            </br>
+                            </br>
+                <!--Select Button-->
+                        <div ng-controller="AppCtrl" style="text-align: center">
+                            <md-button class="md-raised" ng-click="show()">Add an Entry</md-button>
+                        </div>
+            <!--Input Fields-->
+                        <div>
+                            <md-input-container class="center">
+                                <label>TODO TITLE</label>
+                                <input type="text" ng-model="name" class="center">
+                            </md-input-container>
+                            <md-input-container class="center">
+                                <label>Description</label>
+                                <textarea ng-model="description" class="center"></textarea>
+                            </md-input-container>
+
+            <!--DropbDown Menu-->
+
+                            <div ng-controller="AppCtrl" layout="column" layout-align="center center" flex>
+                                <md-select placeholder="Pick Priority" ng-model="someVal">
+                                    <md-option value="1">Urgent</md-option>
+                                    <md-option value="2">High</md-option>
+                                    <md-option value="3">Medium</md-option>
+                                    <md-option value="4">Low</md-option>
+                                </md-select>
+                            </div>
+
+                            </br>
+                            </br>
+
+            <!--Submit Button-->
+                            <div style="text-align: center">
+                                <md-button class="md-fab md-accent" aria-label="Play">
+                                    <md-tooltip>
+                                        Submit
+                                    </md-tooltip>
+                                    <md-icon icon="/img/icons/ic_play_arrow_24px.svg"></md-icon>
+                                </md-button>
+                            </div>
+
+                        </div>
+
+            <!--Left navigation Button-->
+                        <div>
+                            <md-button ng-click="toggleLeft()"
+                                       class="md-primary" hide-gt-md>
+                                Toggle left
+                            </md-button>
+                        </div>
+            <!--Right Navigation Button-->
+                        <div>
+                            <md-button ng-click="toggleRight()"
+                                       class="md-primary">
+                                TODO History
+                            </md-button>
+                        </div>
+                    </div>
+
+                    <div flex></div>
+                </md-content>
+        <!--middle content Ends-->
+
+        <!--Left Navigation-->
+
+                <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+                    <md-toolbar class="md-theme-light">
+                        <h1 class="md-toolbar-tools">TODO HISTORY</h1>
+                    </md-toolbar>
+                    <md-content ng-controller="RightCtrl" layout-padding>
+                        <form>
+                            <md-input-container>
+                                <label for="testInput">Search For Recent Activities</label>
+                                <input type="text" id="testInput"
+                                       ng-model="data" md-sidenav-focus>
+                            </md-input-container>
+                        </form>
+                        <md-button ng-click="close()" class="md-primary">
+                            Close History
+                        </md-button>
+
+                    <div ng-controller="AppCtrl">
+                        <md-list-item class="md-3-line">
+
+                            <div class="md-list-item-text">
+                                <h3>Title : {{ name }}</h3>
+                                <p>DESCRIPTION : {{ description }}</p>
+                                <p>Priority : Urgent</p>
+
+                            </div>
+                        </md-list-item>
+                    </div>
+
+                    </md-content>
+                </md-sidenav>
+
+            </section>
+        </div>
+
+
+
+
+
+</body>
+</html>
